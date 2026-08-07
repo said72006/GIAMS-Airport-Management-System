@@ -1,0 +1,2 @@
+Maya Saleh|E2001|Palestinian|2500.0|MORNING|Arabic,English,Turkish|120
+Rana Omar|E2002|Egyptian|2700.0|NIGHT|Arabic,English,French|150

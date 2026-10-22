@@ -91,8 +91,8 @@ public class Airport {
                 report.append("Destination: ").append(passenger.getDestination()).append("\n");
                 report.append("Passport Expiry: ").append(passenger.getPassportExpiry()).append("\n");
                 report.append("Document Status: ")
-                        .append(passenger.getPassportExpiry().getYear() <= 2026
-                                ? "Passport expired or expires this year"
+                        .append(passenger.getPassportExpiry().isBefore(java.time.LocalDate.now())
+                                ? "Passport expired"
                                 : "Passport valid for travel")
                         .append("\n");
             }

@@ -25,13 +25,16 @@ public class Flight {
         this.id = idCounter++;
         this.destination = destination;
         this.pilot = pilot;
+        if (capacity <= 0 || (passengers != null && passengers.size() > capacity)) {
+            throw new IllegalArgumentException("Capacity must be positive and fit existing passengers");
+        }
         this.capacity = capacity;
 
         // الرحلة تبدأ مجدولة
         this.flightStatus = FlightStatus.SCHEDULED;
 
         this.passengers = passengers != null
-                ? passengers
+                ? new ArrayList<>(passengers)
                 : new ArrayList<>();
     }
 
@@ -44,11 +47,14 @@ public class Flight {
         this.id = id;
         this.destination = destination;
         this.pilot = pilot;
+        if (capacity <= 0 || (passengers != null && passengers.size() > capacity)) {
+            throw new IllegalArgumentException("Capacity must be positive and fit existing passengers");
+        }
         this.capacity = capacity;
         this.flightStatus = status;
 
         this.passengers = passengers != null
-                ? passengers
+                ? new ArrayList<>(passengers)
                 : new ArrayList<>();
     }
 
@@ -107,6 +113,9 @@ public class Flight {
 
 
     public void setCapacity(int capacity) {
+        if (capacity <= 0 || (passengers != null && passengers.size() > capacity)) {
+            throw new IllegalArgumentException("Capacity must be positive and fit existing passengers");
+        }
         this.capacity = capacity;
     }
 
@@ -123,6 +132,9 @@ public class Flight {
 
     public void bookPassenger(Passenger passenger)
             throws DuplicatePassengerException, FlightFullException {
+        if (passenger == null) {
+            throw new IllegalArgumentException("Passenger cannot be null");
+        }
 
 
         for (Passenger p : passengers) {

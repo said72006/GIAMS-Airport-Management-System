@@ -31,11 +31,11 @@ public class Airport {
     }
 
     public ArrayList<Person> getPeople() {
-        return people;
+        return new ArrayList<>(people);
     }
 
     public ArrayList<Flight> getFlights() {
-        return flights;
+        return new ArrayList<>(flights);
     }
 
     // Text version is useful for the GUI while keeping the original console report method.
